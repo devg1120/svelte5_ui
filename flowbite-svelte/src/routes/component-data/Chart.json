@@ -1,0 +1,10 @@
+{
+  "name": "Chart",
+  "slots": [],
+  "events": [],
+  "props": [
+    ["options", "ApexOptions", ""],
+    ["class?", "string", ""],
+    ["chart?", "ApexCharts", ""]
+  ]
+}

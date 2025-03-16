@@ -1,0 +1,25 @@
+## core
+git clone https://github.com/svar-widgets/core
+  cd core
+      yarn
+      npm run start
+
+
+## gantt
+git clone https://github.com/svar-widgets/gantt
+  cd gantt
+      yarn
+      npm run start
+
+## grid
+git clone https://github.com/svar-widgets/grid
+
+
+## editor
+git clone https://github.com/svar-widgets/editor
+  cd editor
+      yarn
+      npm run start
+
+
+

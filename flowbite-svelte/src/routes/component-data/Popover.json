@@ -1,0 +1,9 @@
+{
+  "name": "Popover",
+  "slots": ["title"],
+  "events": ["show"],
+  "props": [
+    ["title?", "string", ""],
+    ["defaultClass?", "string", ""]
+  ]
+}

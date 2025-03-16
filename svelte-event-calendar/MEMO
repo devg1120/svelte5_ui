@@ -1,0 +1,9 @@
+
+cd calendar
+
+yarn
+npm run build
+./_start_lighttpd.sh
+
+
+

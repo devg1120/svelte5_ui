@@ -1,0 +1,6 @@
+{
+  "name": "NavBrand",
+  "slots": [],
+  "events": [],
+  "props": [["href?", "string", "''"]]
+}

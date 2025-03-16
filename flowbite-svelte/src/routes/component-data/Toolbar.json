@@ -1,0 +1,6 @@
+{
+  "name": "Toolbar",
+  "slots": ["end"],
+  "events": [],
+  "props": [["embedded?", "boolean", ""]]
+}

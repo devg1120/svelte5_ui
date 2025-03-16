@@ -1,0 +1,23 @@
+{
+	"name": "wx-filemanager-data-provider",
+	"version": "2.1.0",
+	"type": "module",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"license": "MIT",
+	"scripts": {
+		"build": "yarn tsc",
+		"watch": "yarn tsc -w --preserveWatchOutput",
+		"lint": "yarn eslint ./src",
+		"test": "vitest --run"
+	},
+	"files": [
+		"dist"
+	],
+	"devDependencies": {
+		"wx-filemanager-store": "2.1.0"
+	},
+	"dependencies": {
+		"wx-lib-data-provider": "1.5.1"
+	}
+}

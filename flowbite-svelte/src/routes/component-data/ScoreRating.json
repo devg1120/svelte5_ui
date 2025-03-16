@@ -1,0 +1,6 @@
+{
+  "name": "ScoreRating",
+  "slots": [],
+  "events": [],
+  "props": [["ratings", "{ label", "[]"]]
+}

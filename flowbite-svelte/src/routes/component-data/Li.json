@@ -1,0 +1,9 @@
+{
+  "name": "Li",
+  "slots": [],
+  "events": [],
+  "props": [
+    ["icon?", "boolean", "false"],
+    ["liClass?", "string", "''"]
+  ]
+}

@@ -4,6 +4,61 @@ cd calendar
 yarn
 npm run build
 ./_start_lighttpd.sh
+open http://127.0.0.1:3000
+
+-------------------------------------------
+
+cd  svelte-event-calendar-demo
+
+yarn
+
+development
+  npm run dev
+  open http://127.0.0.1:3000
+
+release    # SSR MODE
+  svelte.config.js
+    import adapter from "@sveltejs/adapter-node";
+
+  npm run build
+  cd build
+  node index.js
+-------------------------------------------
+
+cd  svelte-event-calendar-demo-localpkg
+
+
+package.json  ORG
+    "@event-calendar/core": "^3.6.1",
+    "@event-calendar/time-grid": "^3.6.1",
+    "@event-calendar/day-grid": "^3.6.1",
+    "@event-calendar/list": "^3.6.1",
+    "@event-calendar/resource-time-grid": "^3.6.1",
+    "@event-calendar/resource-timeline": "^3.6.1",
+
+package.json  MOD to local
+    "@event-calendar/core": "file:../calendar/packages/core",
+    "@event-calendar/day-grid": "file:../calendar/packages/day-grid",
+    "@event-calendar/list": "file:../calendar/packages/list",
+    "@event-calendar/resource-time-grid": "file:../calendar/packages/resource-time-grid",
+    "@event-calendar/resource-timeline": "file:../calendar/packages/resource-timeline",
+    "@event-calendar/time-grid": "file:../calendar/packages/time-grid",
+
+yarn
+npm install -D sass-embedded
+
+development
+  npm run dev
+  open http://127.0.0.1:3000
+
+release    # SSR MODE
+  svelte.config.js
+    import adapter from "@sveltejs/adapter-node";
+
+  npm run build
+  cd build
+  node index.js
+
 
 
 

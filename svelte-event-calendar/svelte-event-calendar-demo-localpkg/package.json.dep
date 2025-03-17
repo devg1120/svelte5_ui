@@ -13,12 +13,12 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",
-    "@event-calendar/core": "^3.6.1",
-    "@event-calendar/day-grid": "^3.6.1",
-    "@event-calendar/list": "^3.6.1",
-    "@event-calendar/resource-time-grid": "^3.6.1",
-    "@event-calendar/resource-timeline": "^3.6.1",
-    "@event-calendar/time-grid": "^3.6.1",
+    "@event-calendar/core": "file:../calendar",
+    "@event-calendar/day-grid": "file:../calendar",
+    "@event-calendar/list": "file:../calendar",
+    "@event-calendar/resource-time-grid": "file:../calendar",
+    "@event-calendar/resource-timeline": "file:../calendar",
+    "@event-calendar/time-grid": "file:../calendar",
     "@sveltejs/adapter-auto": "^3.0.0",
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
@@ -39,7 +39,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@sveltejs/adapter-node": "^5.2.12",
-    "@sveltejs/adapter-static": "^3.0.8"
+    "@sveltejs/adapter-node": "^5.2.12"
   }
 }

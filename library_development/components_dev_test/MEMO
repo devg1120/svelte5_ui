@@ -1,0 +1,55 @@
+
+
+SvelteKitを使ってコンポーネントライブラリを作成してみよう！
+
+https://qiita.com/oekazuma/items/d6a0dc6f7c3c2d912f64
+
+### test_components
+
+ npm create vite@latest
+ -set
+   sveltekit
+   lib
+   js
+
+ -dev
+       src
+       |-- app.d.ts
+       |-- app.html
+       |-- lib                     <===  lib  Button.svelte
+       |   `-- index.js            <===   export
+       `-- routes
+           `-- +page.svelte      sandbox
+
+ npm run dev sandbox  開発テスト
+
+ npm build
+ ls dist/
+     Button.svelte  Button.svelte.d.ts  index.d.ts  index.js
+  
+### testapp
+
+pacakge.json
+  "dependencies": {
+    "test_components": "file:../test_components"
+  },
+
+
+App.svelte
+<script>
+  import { Button } from 'test_components';
+</script>
+
+
+<Button />
+<Button style="pill" />
+<Button style="outline" />
+
+
+---------------------------------
+SvelteではじめるWeb Components開発
+
+https://qiita.com/oekazuma/items/3aa64516362a50be3fbb
+
+
+

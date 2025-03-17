@@ -1,0 +1,21 @@
+
+
+### svelte5 legacy-js-api
+
+cd  svelte5-event-calendar-demo-self-legacy-api   ## 
+
+yarn
+
+development
+  npm run dev
+  open http://127.0.0.1:3000
+
+release    # SSR MODE
+  svelte.config.js
+    import adapter from "@sveltejs/adapter-node";
+
+  npm run build
+  cd build
+  node index.js
+-------------------------------------------
+

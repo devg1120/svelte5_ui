@@ -1,0 +1,20 @@
+
+
+SvelteKitを使ってコンポーネントライブラリを作成してみよう！
+
+https://qiita.com/oekazuma/items/d6a0dc6f7c3c2d912f64
+
+./components_dev_test/
+
+  test_components       library
+
+  testapp               import test app
+
+
+----------------------------------------------------------------
+SvelteではじめるWeb Components開発
+
+https://qiita.com/oekazuma/items/3aa64516362a50be3fbb
+
+
+

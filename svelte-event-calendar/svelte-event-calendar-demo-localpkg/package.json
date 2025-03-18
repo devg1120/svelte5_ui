@@ -19,6 +19,7 @@
     "@event-calendar/resource-time-grid": "file:../calendar/packages/resource-time-grid",
     "@event-calendar/resource-timeline": "file:../calendar/packages/resource-timeline",
     "@event-calendar/time-grid": "file:../calendar/packages/time-grid",
+    "@event-calendar/interaction": "file:../calendar/packages/interaction",
     "@sveltejs/adapter-auto": "^3.0.0",
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",

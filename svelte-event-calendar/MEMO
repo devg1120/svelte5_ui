@@ -1,5 +1,16 @@
 
+https://github.com/vkurko/calendar
 cd calendar
+
+yarn
+npm run build
+./_start_lighttpd.sh
+open http://127.0.0.1:3000
+
+-------------------------------------------
+https://github.com/midas-pro/svelte-calendar
+cd svelte-calendar
+
 
 yarn
 npm run build

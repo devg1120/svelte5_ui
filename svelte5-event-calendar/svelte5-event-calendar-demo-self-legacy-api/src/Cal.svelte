@@ -5,8 +5,9 @@
     import List from "@event-calendar/list";
     import ResourceTimeGrid from "@event-calendar/resource-time-grid";
     import ResourceTimeline from "@event-calendar/resource-timeline";
+    import Interaction from "@event-calendar/interaction";
 
-    let plugins = [TimeGrid, DayGrid, List, ResourceTimeGrid, ResourceTimeline];
+    let plugins = [TimeGrid, DayGrid, List, ResourceTimeGrid, ResourceTimeline, Interaction];
     let options: Calendar.Options = {
         //view: 'dayGridMonth',
         view: 'timeGridWeek',
@@ -55,6 +56,7 @@
         dayMaxEvents: true,
         nowIndicator: true,
         selectable: true,
+        editable: true,
     };
 
     function toggleAllDay() {

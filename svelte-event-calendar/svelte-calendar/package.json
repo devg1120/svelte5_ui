@@ -1,0 +1,43 @@
+{
+  "name": "event-calendar",
+  "version": "2.6.1",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public",
+    "set-version": "node ./scripts/set-version.cjs",
+    "publish": "node ./scripts/publish.cjs"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.5",
+    "@babel/plugin-transform-runtime": "^7.23.4",
+    "@babel/preset-env": "^7.23.5",
+    "@babel/runtime-corejs3": "^7.23.5",
+    "@event-calendar/build": "~2.6.1",
+    "@event-calendar/core": "~2.6.1",
+    "@event-calendar/day-grid": "~2.6.1",
+    "@event-calendar/interaction": "~2.6.1",
+    "@event-calendar/list": "~2.6.1",
+    "@event-calendar/resource-time-grid": "~2.6.1",
+    "@event-calendar/time-grid": "~2.6.1",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "rollup": "^4.6.1",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-scss": "^4.0.0",
+    "rollup-plugin-svelte": "^7.1.6",
+    "sass": "^1.69.5",
+    "svelte": "^4.2.8"
+  },
+  "dependencies": {
+    "sirv-cli": "^2.0.2"
+  },
+  "browserslist": [
+    "defaults and supports fetch"
+  ],
+  "type": "module"
+}

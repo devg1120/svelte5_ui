@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script lang="ts">
+      const dark = localStorage.getItem("theme") === "dark";
+      if (dark) document.documentElement.classList.add("dark");
+      else document.documentElement.classList.remove("dark");
+
+      const accent = localStorage.getItem("accent") || "red";
+      const colors = ["red", "green", "blue", "yellow", "orange"];
+      colors.forEach((color) => {
+        document.documentElement.classList.remove(`accent-${color}`);
+      });
+      document.documentElement.classList.add(`accent-${accent}`);
+    </script>
+
+    <meta charset="utf-8" />
+    <link rel="icon" href="%sveltekit.assets%/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">%sveltekit.body%</div>
+  </body>
+</html>

@@ -1,3 +1,5 @@
+<!-- @migration-task Error while migrating Svelte code: structuredClone is not defined -->
+<!-- @migration-task Error while migrating Svelte code: structuredClone is not defined -->
 <script>
     import {getContext, tick} from 'svelte';
     import {ancestor, rect, setContent, outsideEvent, keyEnter, toISOString} from '@event-calendar/core';

@@ -1,3 +1,5 @@
+<!-- @migration-task Error while migrating Svelte code: structuredClone is not defined -->
+<!-- @migration-task Error while migrating Svelte code: structuredClone is not defined -->
 <script>
     import {getContext, afterUpdate} from 'svelte';
     import {max} from '@event-calendar/core';

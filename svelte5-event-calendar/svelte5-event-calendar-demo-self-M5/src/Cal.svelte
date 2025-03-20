@@ -1,3 +1,5 @@
+<!-- @migration-task Error while migrating Svelte code: structuredClone is not defined -->
+<!-- @migration-task Error while migrating Svelte code: structuredClone is not defined -->
 <script lang="ts">
     import Calendar from "@event-calendar/core";
     import TimeGrid from "@event-calendar/time-grid";

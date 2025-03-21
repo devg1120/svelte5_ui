@@ -29,3 +29,9 @@ find src/ -type f -name "*.svelte" | xargs sed -i "s/afterUpdate(()/\$effect(()/
 
 createEventDispatcher
 preventDefault
+
+LOOP brobrem
+  lib/paclage/core/src/Buttons.svelte
+        run()   commentout
+
+

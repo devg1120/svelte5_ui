@@ -153,9 +153,9 @@
     style:height={$height}
     role="{listView($view) ? 'list' : 'table'}"
 >
-<!--
+
     <Toolbar/>
--->
+
     <SvelteComponent/>
 </div>
 <Auxiliary/>

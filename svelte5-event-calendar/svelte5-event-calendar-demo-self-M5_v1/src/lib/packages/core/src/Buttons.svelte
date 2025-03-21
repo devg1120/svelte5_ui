@@ -30,6 +30,7 @@
     function next() {
         $date = nextDate($date, $duration);
     }
+/* GUSA
     run(() => {
         if (!isRunning()) {
             running = true;
@@ -57,6 +58,7 @@
             tick().then(() => running = false);
         }
     });
+*/
 </script>
 
 {#each buttons as button}

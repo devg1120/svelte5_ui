@@ -27,11 +27,13 @@
 
     run(() => {
         event = chunk.event;
+        //untrack(() =>  event = chunk.event)
     });
 
     run(() => {
-return untrack(() => {
         display = event.display;
+        //untrack(() => display = event.display)
+
 
         // Style
         let step = $slotDuration.seconds;
@@ -70,7 +72,6 @@ return untrack(() => {
             ...$_iClasses([], event),
             ...createEventClasses($eventClassNames, event, $_view)
         ].join(' ');
- })
     });
 
     // Content
@@ -130,8 +131,8 @@ return untrack(() => {
     tabindex="{onclick ? 0 : undefined}"
     {onclick}
     onkeydown={onclick && keyEnter(onclick)}
-    onmouseenter={() => createHandler($eventMouseEnter, display)}
-    onmouseleave={() => createHandler($eventMouseLeave, display)}
+    onmouseenter={ () => createHandler($eventMouseEnter, display)}
+    onmouseleave={ () => createHandler($eventMouseLeave, display)}
     onpointerdown={!bgEvent(display) && !helperEvent(display) && createDragHandler($_interaction)}
 >
     <SvelteComponent

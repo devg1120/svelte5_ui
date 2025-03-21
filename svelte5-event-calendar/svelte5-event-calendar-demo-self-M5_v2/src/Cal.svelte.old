@@ -93,10 +93,6 @@
         let norm = Math.floor(Math.abs(num));
         return (norm < 10 ? '0' : '') + norm;
     }
-
-
-   $inspect(options)
-
 </script>
 
 <button onclick={toggleAllDay}>{options.allDaySlot ? "Hide" : "Show"} all-day</button>

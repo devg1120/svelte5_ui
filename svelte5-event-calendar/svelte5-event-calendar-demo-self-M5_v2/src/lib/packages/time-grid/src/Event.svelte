@@ -93,6 +93,11 @@
         }
     });
 
+    function _createHandler(fn, display) {
+        return !helperEvent(display) && isFunction(fn)
+            ? jsEvent => fn({event: toEventWithLocalDates(event), el, jsEvent, view: toViewWithLocalDates($_view)})
+            : undefined;
+    }
     function createHandler(fn, display) {
         return !helperEvent(display) && isFunction(fn)
             ? jsEvent => fn({event: toEventWithLocalDates(event), el, jsEvent, view: toViewWithLocalDates($_view)})
@@ -127,9 +132,9 @@
     tabindex="{onclick ? 0 : undefined}"
     {onclick}
     onkeydown={onclick && keyEnter(onclick)}
-    onmouseenter={createHandler($eventMouseEnter, display)}
-    onmouseleave={createHandler($eventMouseLeave, display)}
-    onpointerdown={!bgEvent(display) && !helperEvent(display) && createDragHandler($_interaction)}
+    onmouseenter={ createHandler($eventMouseEnter, display)}
+    onmouseleave={ createHandler($eventMouseLeave, display)}
+    onpointerdown={ !bgEvent(display) && !helperEvent(display) && createDragHandler($_interaction)}
 >
     <SvelteComponent
         start

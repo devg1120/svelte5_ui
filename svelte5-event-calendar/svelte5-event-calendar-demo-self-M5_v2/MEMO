@@ -34,4 +34,18 @@ LOOP brobrem
   lib/paclage/core/src/Buttons.svelte
         run()   commentout
 
+############################################
+src/lib/packages/time-grid/src/ Event.svelte 
+
+
+    onmouseenter={ createHandler($eventMouseEnter, display)}
+    onmouseleave={ createHandler($eventMouseLeave, display)}
+
+                                 $の意味/
+
+$でsubscribeする。
+
+https://qiita.com/sho_U/items/8a508a75aeabed204648
+
+
 

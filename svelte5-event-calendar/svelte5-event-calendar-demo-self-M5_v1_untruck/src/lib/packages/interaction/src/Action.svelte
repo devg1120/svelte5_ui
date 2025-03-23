@@ -2,7 +2,7 @@
     import { createBubbler, nonpassive } from 'svelte/legacy';
 
     const bubble = createBubbler();
-    import {getContext} from 'svelte';
+    import {getContext } from 'svelte';
     import {
         addDay, addDuration, ancestor, assign, cloneDate, cloneEvent, copyTime, createDuration, getElementWithPayload,
         getPayload, isFunction, listen, listView, max, min, rect, runAll, subtractDay, subtractDuration, timelineView,
@@ -16,6 +16,7 @@
         selectBackgroundColor, selectLongPressDelay, selectMinDistance, slotDuration, slotHeight, slotWidth, unselect: unselectFn,
         unselectAuto, unselectCancel, validRange, view} = getContext('state');
 
+    //let _events_ = $state.raw(_events)
     const ACTION_DRAG = 1;
     const ACTION_RESIZE_END = 2;
     const ACTION_RESIZE_START = 3;
@@ -446,11 +447,50 @@
         $_iEvents[0] = null;
     }
 
-    function updateEvent(target, source) {
+    function updateEvent_org(target, source) {
+    //function updateEvent(target, source) {
+        console.log("updateEvent source", source)
+        console.log("updateEvent old target", target)
+
         target.start = source.start;
         target.end = source.end;
         target.resourceIds = source.resourceIds;
-        $_events = $_events;
+
+        console.log("updateEvent new target", target)
+        $_events = $_events
+
+	//console.log($_events)
+
+    }
+
+    //function updateEvent_static(target, source) {
+    function updateEvent(target, source) {
+        //console.log("updateEvent old target", target)
+        //console.log("updateEvent source", source)
+
+        //target.start = source.start;
+        //target.end = source.end;
+        //target.resourceIds = source.resourceIds;
+
+        //console.log("updateEvent new target", target)
+	//target = target
+	//target.update()
+        //$_events[5].start = source.start
+        //$_events[5].end = source.end
+
+	//console.log("source",source.id)
+	//console.log("target",target.id)
+        for (let event of $_events) {
+	    if (event.id === target.id) {
+	     console.log(event.id)
+             event.start = source.start
+             event.end = source.end
+	     break
+	    }
+
+        }
+
+	//console.log($_events)
     }
 
     function distance() {

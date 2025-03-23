@@ -30,7 +30,7 @@
     function next() {
         $date = nextDate($date, $duration);
     }
-/* GUSA
+
     run(() => {
         if (!isRunning()) {
             running = true;
@@ -55,10 +55,10 @@
                 todayDisabled = test();
                 $date = currentDate;
             }
-            tick().then(() => running = false);
+           //await tick().then(() => running = false);
         }
     });
-*/
+
 </script>
 
 {#each buttons as button}

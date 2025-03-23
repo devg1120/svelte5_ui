@@ -1,5 +1,6 @@
 <script lang="ts">
     import { run } from 'svelte/legacy';
+    import { createBubbler } from 'svelte/legacy';
 
     //import {afterUpdate, getContext, onMount} from 'svelte';
     import { getContext, onMount} from 'svelte';
@@ -7,6 +8,9 @@
         bgEvent, createEventClasses, createEventContent, ghostEvent, helperEvent, isFunction, keyEnter, max,
         resourceBackgroundColor, resourceTextColor, setContent, task, toEventWithLocalDates, toViewWithLocalDates
     } from '@event-calendar/core';
+
+    const bubble = createBubbler();
+
 
     let { date, chunk } = $props();
 
@@ -121,6 +125,9 @@
     
 
     const SvelteComponent = $derived($_interaction.resizer);
+    function fandler(e) {
+       console.log("Event pointer up")
+    }
 </script>
 
 <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
@@ -132,9 +139,10 @@
     tabindex="{onclick ? 0 : undefined}"
     {onclick}
     onkeydown={onclick && keyEnter(onclick)}
-    onmouseenter={ createHandler($eventMouseEnter, display)}
-    onmouseleave={ createHandler($eventMouseLeave, display)}
+    onmouseenter={ () => createHandler($eventMouseEnter, display)}
+    onmouseleave={ () => createHandler($eventMouseLeave, display)}
     onpointerdown={ !bgEvent(display) && !helperEvent(display) && createDragHandler($_interaction)}
+
 >
     <SvelteComponent
         start
@@ -147,3 +155,9 @@
         on:pointerdown={createDragHandler($_interaction, ['y', 'end'])}
     />
 </article>
+<!--
+    onmouseenter={ createHandler($eventMouseEnter, display)}
+    onmouseleave={ createHandler($eventMouseLeave, display)}
+    onpointerdown={ !bgEvent(display) && !helperEvent(display) && createDragHandler($_interaction)}
+-->
+

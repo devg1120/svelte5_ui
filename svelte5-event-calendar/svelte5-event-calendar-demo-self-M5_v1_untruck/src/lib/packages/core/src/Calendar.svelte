@@ -123,17 +123,17 @@
 
     //beforeUpdate(() => {
     $effect.pre(() => {
-return untrack(() => {
+//return untrack(() => {
         flushDebounce($_queue);
- })
+// })
     });
 
     //afterUpdate(() => {
     $effect(() => {
-return untrack(() => {
+//return untrack(() => {
         flushDebounce($_queue2);
         task(recheckScrollable, null, _tasks);
- })
+ //})
     });
 
 

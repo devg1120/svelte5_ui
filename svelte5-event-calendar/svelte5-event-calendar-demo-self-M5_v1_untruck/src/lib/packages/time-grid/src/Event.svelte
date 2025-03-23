@@ -14,7 +14,7 @@
     let {displayEventEnd, eventAllUpdated, eventBackgroundColor, eventTextColor, eventColor, eventContent, eventClick,
         eventDidMount, eventClassNames, eventMouseEnter, eventMouseLeave, slotEventOverlap, slotDuration, slotHeight,
         resources, theme,
-        _view, _intlEventTime, _interaction, _iClasses, _slotTimeLimits, _tasks} = getContext('state');
+        _view, _intlEventTime, _interaction, _iClasses, _slotTimeLimits, _tasks , _events} = getContext('state');
 
     let el = $state();
     let event = $state();
@@ -31,6 +31,7 @@
     });
 
     run(() => {
+
         display = event.display;
         //untrack(() => display = event.display)
 
@@ -45,6 +46,8 @@
         let maxHeight = ($_slotTimeLimits.max.seconds - start) / step * $slotHeight;
         let bgColor = event.backgroundColor || resourceBackgroundColor(event, $resources) || $eventBackgroundColor || $eventColor;
         let txtColor = event.textColor || resourceTextColor(event, $resources) || $eventTextColor;
+
+        untrack(() => {
         style =
             `top:${top}px;` +
             `min-height:${height}px;` +
@@ -72,10 +75,12 @@
             ...$_iClasses([], event),
             ...createEventClasses($eventClassNames, event, $_view)
         ].join(' ');
+       })
     });
 
     // Content
     run(() => {
+
         [timeText, content] = createEventContent(chunk, $displayEventEnd, $eventContent, $theme, $_intlEventTime, $_view);
     });
 
@@ -135,6 +140,7 @@
     onmouseleave={ () => createHandler($eventMouseLeave, display)}
     onpointerdown={!bgEvent(display) && !helperEvent(display) && createDragHandler($_interaction)}
 >
+
     <SvelteComponent
         start
         {event}
@@ -145,4 +151,5 @@
         {event}
         on:pointerdown={createDragHandler($_interaction, ['y', 'end'])}
     />
+
 </article>

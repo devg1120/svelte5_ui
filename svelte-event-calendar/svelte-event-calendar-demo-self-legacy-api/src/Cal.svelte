@@ -34,6 +34,7 @@
                 slotWidth: 80,
                 resources: [
                     {id: 1, title: 'Resource A'},
+
                     {id: 2, title: 'Resource B'},
                     {id: 3, title: 'Resource C'},
                     {id: 4, title: 'Resource D'},
@@ -91,7 +92,9 @@
     function _pad(num) {
         let norm = Math.floor(Math.abs(num));
         return (norm < 10 ? '0' : '') + norm;
-    }
+    } 
+   //$inspect(options.events)
+
 </script>
 
 <button on:click={toggleAllDay}>{options.allDaySlot ? "Hide" : "Show"} all-day</button>

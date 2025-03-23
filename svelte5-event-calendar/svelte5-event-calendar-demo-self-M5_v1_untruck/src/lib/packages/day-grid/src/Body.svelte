@@ -1,5 +1,6 @@
 <script>
     import { run } from 'svelte/legacy';
+    import { untrack } from "svelte";
 
     import {getContext} from 'svelte';
     import Week from './Week.svelte';
@@ -10,6 +11,8 @@
     let days = $state();
 
     run(() => {
+     untrack(() => {
+
         weeks = [];
         days = 7 - $hiddenDays.length;
         $_hiddenEvents = {};
@@ -21,6 +24,7 @@
             }
             weeks.push(dates);
         }
+    });
     });
     
 </script>

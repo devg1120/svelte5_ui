@@ -10,6 +10,7 @@
     let plugins = [TimeGrid, DayGrid, List, ResourceTimeGrid, ResourceTimeline, Interaction];
     //let plugins = [TimeGrid, DayGrid,  ResourceTimeGrid, ResourceTimeline, Interaction];
     let options: Calendar.Options = $state({
+    //let options: Calendar.Options = {
         //view: 'dayGridMonth',
         view: 'timeGridWeek',
         //view: 'timeGridDay',
@@ -59,6 +60,7 @@
         selectable: true,
         editable: true,
     });
+    //};
 
     function toggleAllDay() {
         options.allDaySlot = !options.allDaySlot;

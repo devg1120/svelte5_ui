@@ -1,5 +1,6 @@
 <script lang="ts">
     import { run } from 'svelte/legacy';
+    import { untrack } from "svelte";
 
     import {getContext, tick} from 'svelte';
     import {
@@ -26,10 +27,13 @@
 
     let debounceHandle = {};
     function reposition() {
+    untrack(() => {
         debounce(() => runReposition(refs, dates), debounceHandle, _queue2);
+	})
     }
 
     run(() => {
+    untrack(() => {
         chunks = [];
         bgChunks = [];
         for (let event of $_events) {
@@ -48,6 +52,7 @@
         longChunks = prepareEventChunks(chunks, $hiddenDays);
         // Run reposition only when events get changed
         reposition();
+	})
     });
 
     run(() => {

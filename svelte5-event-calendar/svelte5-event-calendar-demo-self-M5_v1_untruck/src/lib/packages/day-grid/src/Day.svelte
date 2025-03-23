@@ -1,5 +1,6 @@
 <script lang="ts">
     import { run, stopPropagation, createBubbler } from 'svelte/legacy';
+    import { untrack } from "svelte";
 
     const bubble = createBubbler();
     import {getContext, tick} from 'svelte';
@@ -62,6 +63,7 @@
         disabled = outsideRange(date, $validRange);
     });
     run(() => {
+     untrack(() => {
         if (!disabled) {
             dayChunks = [];
             dayBgChunks = bgChunks.filter(bgChunk => datesEqual(bgChunk.date, date));
@@ -76,6 +78,7 @@
                 }
             }
         }
+    });
     });
     run(() => {
         $_hiddenEvents[date.getTime()] = hiddenEvents;

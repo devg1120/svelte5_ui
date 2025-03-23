@@ -1,5 +1,6 @@
 <script>
     import { createBubbler, nonpassive } from 'svelte/legacy';
+    import { preventDefault } from 'svelte/legacy';
 
     const bubble = createBubbler();
     import {getContext} from 'svelte';
@@ -44,6 +45,7 @@
     let extraDuration;  // extra duration for zero duration events
 
     export function drag(eventToDrag, jsEvent, resize, forceDate, forceMargin, zeroDuration) {
+        console.log("drag")
         if (!action) {
             action = validJsEvent(jsEvent) ? (
                 resize
@@ -171,6 +173,7 @@
     }
 
     function move(jsEvent) {
+        console.log("move")
         if (
             interacting ||
             jsEvent && jsEvent.pointerType === 'mouse' && distance() >= (selecting() ? $selectMinDistance : $eventDragMinDistance)
@@ -265,6 +268,7 @@
     }
 
     export function handleScroll() {
+        console.log("handleScroll")
         if (complexAction()) {
             calcViewport();
             move();
@@ -272,6 +276,7 @@
     }
 
     function handlePointerMove(jsEvent) {
+        //console.log("Action handlePointerMove")
         if (complexAction() && jsEvent.isPrimary) {
             toX = jsEvent.clientX;
             toY = jsEvent.clientY;
@@ -280,6 +285,8 @@
     }
 
     function handlePointerUp(jsEvent) {
+    //const  handlePointerUp = (jsEvent) => {
+        console.log("Action handlePointerUp")
         if (selected && $unselectAuto && !($unselectCancel && jsEvent.target.closest($unselectCancel))) {
             unselect(jsEvent);
         }
@@ -447,6 +454,7 @@
     }
 
     function updateEvent(target, source) {
+        console.log("Action updateEvent");
         target.start = source.start;
         target.end = source.end;
         target.resourceIds = source.resourceIds;
@@ -523,15 +531,29 @@
             }
         };
     }
+/*
+    // GUSA
+    function createPreventDefaultHandler(condition) {
+        return preventDefault((jsEvent) => {
+            if (condition()) {
+                jsEvent.preventDefault();
+            }
+	})
+    }
+*/
 </script>
+
+
 
 <svelte:window
     onpointermove={handlePointerMove}
     onpointerup={handlePointerUp}
     onpointercancel={handlePointerUp}
+
     onscroll={handleScroll}
     onselectstart={createPreventDefaultHandler(complexAction)}
     oncontextmenu={createPreventDefaultHandler(() => timer)}
     ontouchstart={handleTouchStart}
     use:nonpassive={['touchmove', () => bubble('touchmove')]}
 />
+

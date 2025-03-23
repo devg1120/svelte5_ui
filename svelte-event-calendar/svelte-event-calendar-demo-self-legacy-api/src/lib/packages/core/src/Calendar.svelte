@@ -25,6 +25,8 @@
     export let options = {};
 
     let state = new State(plugins, options);
+
+
     setContext('state', state);
 
     let {_viewComponent, _bodyEl, _interaction, _iClass, _events, _queue, _queue2, _tasks, _scrollable,
@@ -72,6 +74,7 @@
     }
 
     export function updateEvent(event) {
+        console.log("updateEvent", event)
         for (let e of $_events) {
             if (e.id == event.id) {
                 event = createEvents([event])[0];

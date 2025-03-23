@@ -41,6 +41,7 @@
     let extraDuration;  // extra duration for zero duration events
 
     export function drag(eventToDrag, jsEvent, resize, forceDate, forceMargin, zeroDuration) {
+        console.log("drag")
         if (!action) {
             action = validJsEvent(jsEvent) ? (
                 resize
@@ -168,6 +169,7 @@
     }
 
     function move(jsEvent) {
+        console.log("move")
         if (
             interacting ||
             jsEvent && jsEvent.pointerType === 'mouse' && distance() >= (selecting() ? $selectMinDistance : $eventDragMinDistance)
@@ -277,6 +279,7 @@
     }
 
     function handlePointerUp(jsEvent) {
+        console.log("Action handlePointerUp")
         if (selected && $unselectAuto && !($unselectCancel && jsEvent.target.closest($unselectCancel))) {
             unselect(jsEvent);
         }
@@ -444,6 +447,7 @@
     }
 
     function updateEvent(target, source) {
+       console.log("Action updateEvent");
         target.start = source.start;
         target.end = source.end;
         target.resourceIds = source.resourceIds;

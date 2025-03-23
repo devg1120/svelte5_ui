@@ -32,7 +32,7 @@
     function next() {
         $date = nextDate($date, $duration);
     }
-/*  GUSA
+
     run(() => {
         if (!isRunning()) {
             running = true;
@@ -57,10 +57,10 @@
                 todayDisabled = test();
                 $date = currentDate;
             }
-            tick().then(() => running = false);
+            //tick().then(() => running = false);
         }
     });
-*/
+
 
 </script>
 

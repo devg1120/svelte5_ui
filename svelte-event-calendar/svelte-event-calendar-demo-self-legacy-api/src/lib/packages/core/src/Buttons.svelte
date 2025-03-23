@@ -39,7 +39,7 @@
             todayDisabled = test();
             $date = currentDate;
         }
-        tick().then(() => running = false);
+        //tick().then(() => running = false);
     }
 
     function test() {

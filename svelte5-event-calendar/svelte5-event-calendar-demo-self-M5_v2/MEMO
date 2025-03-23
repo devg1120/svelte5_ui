@@ -35,7 +35,7 @@ LOOP brobrem
         run()   commentout
 
 ############################################
-src/lib/packages/time-grid/src/ Event.svelte 
+src/lib/packages/time-grid/src/Event.svelte 
 
 
     onmouseenter={ createHandler($eventMouseEnter, display)}

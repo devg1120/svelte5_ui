@@ -15,9 +15,12 @@
     });
 
     run(() => {
+     //untrack(() => {
+
         for (let key of keys(sections)) {
             sections[key] = $headerToolbar[key].split(' ').map(group => group.split(','));
         }
+    //});
     });
 </script>
 

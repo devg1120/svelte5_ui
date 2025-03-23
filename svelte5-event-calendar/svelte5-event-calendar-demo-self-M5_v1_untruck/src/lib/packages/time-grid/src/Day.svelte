@@ -42,7 +42,7 @@
     });
 
     run(() => {
-//return untrack(() => {
+untrack(() => {
 
         if (!disabled) {
             chunks = [];
@@ -58,7 +58,7 @@
             }
             groupEventChunks(chunks);
         }
-// })
+ })
     });
 
     run(() => {

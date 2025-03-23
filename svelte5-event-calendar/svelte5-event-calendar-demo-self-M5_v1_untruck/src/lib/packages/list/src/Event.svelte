@@ -1,5 +1,6 @@
 <script lang="ts">
     import { run } from 'svelte/legacy';
+    import { untrack } from "svelte";
 
     //import {afterUpdate, getContext, onMount} from 'svelte';
     import { getContext, onMount} from 'svelte';
@@ -39,6 +40,8 @@
     });
 
     run(() => {
+     untrack(() => {      
+
         // Class & Style
         style = '';
         let bgColor = event.backgroundColor || resourceBackgroundColor(event, $resources) || $eventBackgroundColor || $eventColor;
@@ -55,6 +58,7 @@
             $theme.event,
             ...createEventClasses($eventClassNames, event, $_view)
         ].join(' ');
+    });
     });
 
     

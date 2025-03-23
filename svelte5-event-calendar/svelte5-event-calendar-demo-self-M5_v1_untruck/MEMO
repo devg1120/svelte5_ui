@@ -37,7 +37,7 @@ untrack(() => y);
 
 
     run(() => {
-return untrack(() => {
+ untrack(() => {
 
         if (!disabled) {
             chunks = [];

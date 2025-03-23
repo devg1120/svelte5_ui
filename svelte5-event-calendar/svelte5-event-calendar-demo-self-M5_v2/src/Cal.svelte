@@ -9,7 +9,9 @@
 
     //let plugins = [TimeGrid, DayGrid, List, ResourceTimeGrid, ResourceTimeline, Interaction];
     let plugins = [TimeGrid, DayGrid,  ResourceTimeGrid, ResourceTimeline, Interaction];
+    //let  events = $state(createEvents())
     let options: Calendar.Options = $state({
+    //let options: Calendar.Options = $derived({
         //view: 'dayGridMonth',
         view: 'timeGridWeek',
         //view: 'timeGridDay',
@@ -25,6 +27,7 @@
         allDaySlot: false,
 	scrollTime: '09:00:00',
         events: createEvents(),
+        //events: events,
     views: {
             timeGridWeek: {pointer: true},
             resourceTimeGridWeek: {pointer: true},
@@ -95,7 +98,7 @@
     }
 
 
-   $inspect(options)
+   $inspect(options.events)
 
 </script>
 

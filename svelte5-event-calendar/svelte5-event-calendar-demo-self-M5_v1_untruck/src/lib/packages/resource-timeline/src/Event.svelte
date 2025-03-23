@@ -1,5 +1,6 @@
 <script lang="ts">
     import { run } from 'svelte/legacy';
+    import { untrack } from "svelte";
 
     //import {afterUpdate, getContext, onMount} from 'svelte';
     import { getContext, onMount} from 'svelte';
@@ -46,6 +47,8 @@
     });
 
     run(() => {
+     untrack(() => {      
+
         display = event.display;
 
         // Style
@@ -88,6 +91,7 @@
             ...$_iClasses([], event),
             ...createEventClasses($eventClassNames, event, $_view)
         ].join(' ');
+    });
     });
 
     // Content

@@ -27,9 +27,10 @@
     let { plugins = [], options = {} } = $props();
 
     let state = new State(plugins, options);
+
     setContext('state', state);
 
-    let {_viewComponent, _bodyEl, _interaction, _iClass, _events, _queue, _queue2, _tasks, _scrollable,
+    let { _viewComponent, _bodyEl, _interaction, _iClass, _events, _queue, _queue2, _tasks, _scrollable,
         date, duration, hiddenDays, height, theme, view} = state;
 
     // Reactively update options that did change
@@ -121,6 +122,13 @@
         return this;
     }
 
+
+/*
+    _events.subscribe(v => {
+        console.log("Calender UP",$_events[5]);
+    });
+*/
+
     //beforeUpdate(() => {
     $effect.pre(() => {
 //return untrack(() => {
@@ -150,6 +158,9 @@
     });
 
     const SvelteComponent = $derived($_viewComponent);
+
+
+
 </script>
 
 <div

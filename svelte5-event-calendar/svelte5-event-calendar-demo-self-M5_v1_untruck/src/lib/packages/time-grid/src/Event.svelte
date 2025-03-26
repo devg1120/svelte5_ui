@@ -10,6 +10,7 @@
     } from '@event-calendar/core';
 
     let { date, chunk } = $props();
+    //let { date, chunk = $bindable()  } = $props();
 
     let {displayEventEnd, eventAllUpdated, eventBackgroundColor, eventTextColor, eventColor, eventContent, eventClick,
         eventDidMount, eventClassNames, eventMouseEnter, eventMouseLeave, slotEventOverlap, slotDuration, slotHeight,
@@ -24,14 +25,30 @@
     let content = $state();
     let timeText = $state();
     let onclick = $derived(!bgEvent(display) && createHandler($eventClick, display));
+/*
+    _events.subscribe(v => {
+      //console.log("dv", event);
+      //dv()
+     if (event) {
+     for (let target of $_events) {
+            if (event.id === target.id) {
+             chunk,event.start = target.start
+             chunk.event.end =  target.end
+             console.log("SET",chunk.event)
+             break
+            }
 
+        }
+     }
+    });
+*/
     run(() => {
         event = chunk.event;
+      //console.log(event);
         //untrack(() =>  event = chunk.event)
     });
 
     run(() => {
-
         display = event.display;
         //untrack(() => display = event.display)
 
@@ -85,6 +102,7 @@
     });
 
     onMount(() => {
+    //$effect(() => {
         if (isFunction($eventDidMount)) {
             $eventDidMount({
                 event: toEventWithLocalDates(event),

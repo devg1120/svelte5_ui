@@ -9,13 +9,17 @@
 
     let { children }: Props = $props();
 
-    let {_bodyEl, _viewDates, _slotTimeLimits, _times, scrollTime, slotDuration, slotHeight, theme} = getContext('state');
+    let {_events, _bodyEl, _viewDates, _slotTimeLimits, _times, scrollTime, slotDuration, slotHeight, theme} = getContext('state');
 
     let el = $state();
     let compact = $state();
     let lines = $state([]);
-
-
+/*
+    _events.subscribe(v => {
+        //console.log(`time_grid/Body.svelte: _events: ${v} `);
+        console.log("Body",$_events[5]);
+    });
+*/
 
 
     function scrollToTime() {

@@ -22,8 +22,31 @@
     let resourceFilter = $state();
     let start = $state(), end = $state();
 
-    
-    
+
+    _events.subscribe(v => {
+        //console.log(`time_grid/Day.svelte: _events: ${v} `);
+        if (!disabled) {
+            chunks = [];
+            bgChunks = [];
+            for (let event of $_events) {
+                if ((!event.allDay || bgEvent(event.display)) && eventIntersects(event, start, end, resourceFilter)) {
+                    let chunk = createEventChunk(event, start, end);
+                    switch (event.display) {
+                        case 'background': bgChunks.push(chunk); break;
+                        default: chunks.push(chunk);
+                    }
+                }
+            }
+            groupEventChunks(chunks);
+        }
+
+    });
+
+/*
+    _events.subscribe(v => {
+        console.log("time_grid/Day.svelte: _events:", v[5]);
+    });
+*/
     run(() => {
         disabled = outsideRange(date, $validRange);
     });
@@ -43,7 +66,6 @@
 
     run(() => {
 untrack(() => {
-
         if (!disabled) {
             chunks = [];
             bgChunks = [];

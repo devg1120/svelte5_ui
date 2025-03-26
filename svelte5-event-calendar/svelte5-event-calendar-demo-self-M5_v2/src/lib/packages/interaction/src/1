@@ -1,13 +1,10 @@
 <script>
     import { createBubbler, nonpassive } from 'svelte/legacy';
-    //import Calendar  from '../../core/src/Calendar.svelte' ;
-    //import { updateEvent as ue }  from '../../core/src/Calendar.svelte' ;
-
 
     const bubble = createBubbler();
     import {getContext } from 'svelte';
     import {
-        addDay, addDuration, ancestor, assign, cloneDate,  cloneEvent, copyTime, createDuration, getElementWithPayload,
+        addDay, addDuration, ancestor, assign, cloneDate, cloneEvent, copyTime, createDuration, getElementWithPayload,
         getPayload, isFunction, listen, listView, max, min, rect, runAll, subtractDay, subtractDuration, timelineView,
         toEventWithLocalDates, toISOString, toLocalDate, toViewWithLocalDates
     } from '@event-calendar/core';
@@ -428,7 +425,7 @@
             addDuration($_iEvents[0].end, extraDuration);
         }
         event.display = 'ghost';
-        //$_events = $_events;
+        $_events = $_events;
     }
 
     function createIEventSelect() {
@@ -450,42 +447,51 @@
         $_iEvents[0] = null;
     }
 
-    function updateEvent_org(target, source) {
-    //function updateEvent(target, source) {
-        //console.log("updateEvent source", source)
-        //console.log("updateEvent old target", target)
+    //function updateEvent_org(target, source) {
+    function updateEvent(target, source) {
+        console.log("updateEvent source", source)
+        console.log("updateEvent old target", target)
 
         target.start = source.start;
         target.end = source.end;
         target.resourceIds = source.resourceIds;
 
-       // console.log("updateEvent new target", target)
+        console.log("updateEvent new target", target)
         //$_events[5] = target
+$effect.tracking()   
         $_events = $_events
 
 	//console.log($_events)
 
     }
 
-    //function updateEvent_static(target, source) {
-    function updateEvent(target, source) {
+    function updateEvent_static(target, source) {
+    //function updateEvent(target, source) {
         //console.log("updateEvent old target", target)
         //console.log("updateEvent source", source)
 
+        //target.start = source.start;
+        //target.end = source.end;
+        //target.resourceIds = source.resourceIds;
 
+        //console.log("updateEvent new target", target)
+	//target = target
+	//target.update()
+        //$_events[5].start = source.start
+        //$_events[5].end = source.end
+
+	//console.log("source",source.id)
+	//console.log("target",target.id)
         for (let event of $_events) {
 	    if (event.id === target.id) {
 	     console.log(event.id)
              event.start = source.start
              event.end = source.end
-             //console.log(event)
-             //Calendar.updateEvent(event)
 	     break
 	    }
 
         }
-        
-        $_events = $_events
+
 	//console.log($_events)
     }
 

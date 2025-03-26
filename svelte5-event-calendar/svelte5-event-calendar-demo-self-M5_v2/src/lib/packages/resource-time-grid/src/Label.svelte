@@ -1,5 +1,6 @@
 <script lang="ts">
     import { run } from 'svelte/legacy';
+    import { untrack } from "svelte";
 
     //import {getContext, onMount, afterUpdate, createEventDispatcher} from 'svelte';
     import {getContext, onMount, createEventDispatcher} from 'svelte';
@@ -17,6 +18,7 @@
 
     // Content
     run(() => {
+ untrack(() => {
         if ($resourceLabelContent) {
             content = isFunction($resourceLabelContent)
                 ? $resourceLabelContent({
@@ -27,6 +29,7 @@
         } else {
             content = resource.title;
         }
+ })
     });
 
     onMount(() => {

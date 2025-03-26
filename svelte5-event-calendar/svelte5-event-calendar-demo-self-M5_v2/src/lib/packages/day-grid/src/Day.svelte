@@ -1,5 +1,6 @@
 <script lang="ts">
     import { run, stopPropagation, createBubbler } from 'svelte/legacy';
+    import { untrack } from "svelte";
 
     const bubble = createBubbler();
     import {getContext, tick} from 'svelte';
@@ -21,7 +22,7 @@
 
     let {
         date: currentDate, dayMaxEvents, highlightedDates, firstDay, moreLinkContent, theme, validRange, weekNumbers,
-        weekNumberContent, _hiddenEvents, _intlDayCell, _popupDate, _popupChunks, _today, _interaction
+        weekNumberContent, _hiddenEvents, _intlDayCell, _popupDate, _popupChunks, _today, _interaction 
     } = getContext('state');
 
     let el = $state();
@@ -33,11 +34,26 @@
     let showWeekNumber = $state();
     let weekNumber = $state();
     let refs = $state([]);
+/*
+    _events.subscribe(v => {
+        console.log("daryt_grid subsc")
+        if (!disabled) {
+            dayChunks = [];
+            dayBgChunks = bgChunks.filter(bgChunk => datesEqual(bgChunk.date, date));
+            hiddenEvents.clear();
+            hiddenEvents = hiddenEvents;
+            for (let chunk of chunks) {
+                if (datesEqual(chunk.date, date)) {
+                    dayChunks.push(chunk);
+                    // if ($dayMaxEvents !== false && dayChunks.length > $dayMaxEvents) {
+                    // 	chunk.hidden = true;
+                    // }
+                }
+            }
+        }
 
-
-
-
-
+    });
+*/
 
 
     function showMore() {
@@ -62,6 +78,7 @@
         disabled = outsideRange(date, $validRange);
     });
     run(() => {
+     untrack(() => {
         if (!disabled) {
             dayChunks = [];
             dayBgChunks = bgChunks.filter(bgChunk => datesEqual(bgChunk.date, date));
@@ -76,6 +93,7 @@
                 }
             }
         }
+    });
     });
     run(() => {
         $_hiddenEvents[date.getTime()] = hiddenEvents;

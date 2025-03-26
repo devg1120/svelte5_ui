@@ -1,5 +1,6 @@
 <script lang="ts">
     import { run } from 'svelte/legacy';
+    import { untrack } from "svelte";
 
     import {getContext} from 'svelte';
     import {
@@ -21,6 +22,8 @@
     let height = $state(0);
 
     run(() => {
+     untrack(() => {      
+
         start = cloneDate(limitToRange($_viewDates[0], $validRange));
         end = cloneDate(limitToRange($_viewDates.at(-1), $validRange));
         let slotTimeLimits = getSlotTimeLimits($_dayTimeLimits, start);
@@ -29,6 +32,7 @@
         slotTimeLimits.max.seconds > DAY_IN_SECONDS
             ? addDuration(end, slotTimeLimits.max)  /** @see https://github.com/vkurko/calendar/issues/333 */
             : addDay(end);
+    });
     });
 
     let debounceHandle = {};
@@ -41,6 +45,7 @@
     }
 
     run(() => {
+     untrack(() => {      
         chunks = [];
         bgChunks = [];
         for (let event of $_events) {
@@ -57,6 +62,7 @@
         [chunks, longChunks] = prepareEventChunks(chunks, $_viewDates, $_dayTimeLimits, $slotDuration);
         // Run reposition only when events get changed
         reposition();
+    });
     });
 
     run(() => {

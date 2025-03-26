@@ -1,5 +1,6 @@
 <script>
     import { run } from 'svelte/legacy';
+    import { untrack } from "svelte";
 
     import {getContext} from 'svelte';
     import {addDay, cloneDate, toViewWithLocalDates, setContent, bgEvent, isFunction} from '@event-calendar/core';
@@ -10,6 +11,8 @@
     let noEvents = $state(), content = $state();
 
     run(() => {
+     untrack(() => {      
+
         noEvents = true;
         if ($_viewDates.length) {
             let start = $_viewDates[0];
@@ -22,12 +25,15 @@
             }
         }
     });
+    });
 
     run(() => {
+     untrack(() => {      
         content = isFunction($noEventsContent) ? $noEventsContent() : $noEventsContent;
         if (typeof content === 'string') {
             content = {html: content};
         }
+    });
     });
 
     function handleClick(jsEvent) {

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { run } from 'svelte/legacy';
-    import { createBubbler } from 'svelte/legacy';
+    import { untrack } from "svelte";
 
     //import {afterUpdate, getContext, onMount} from 'svelte';
     import { getContext, onMount} from 'svelte';
@@ -9,15 +9,13 @@
         resourceBackgroundColor, resourceTextColor, setContent, task, toEventWithLocalDates, toViewWithLocalDates
     } from '@event-calendar/core';
 
-    const bubble = createBubbler();
-
-
     let { date, chunk } = $props();
+    //let { date, chunk = $bindable()  } = $props();
 
     let {displayEventEnd, eventAllUpdated, eventBackgroundColor, eventTextColor, eventColor, eventContent, eventClick,
         eventDidMount, eventClassNames, eventMouseEnter, eventMouseLeave, slotEventOverlap, slotDuration, slotHeight,
         resources, theme,
-        _view, _intlEventTime, _interaction, _iClasses, _slotTimeLimits, _tasks} = getContext('state');
+        _view, _intlEventTime, _interaction, _iClasses, _slotTimeLimits, _tasks , _events} = getContext('state');
 
     let el = $state();
     let event = $state();
@@ -27,13 +25,33 @@
     let content = $state();
     let timeText = $state();
     let onclick = $derived(!bgEvent(display) && createHandler($eventClick, display));
+/*
+    _events.subscribe(v => {
+      //console.log("dv", event);
+      //dv()
+     if (event) {
+     for (let target of $_events) {
+            if (event.id === target.id) {
+             chunk,event.start = target.start
+             chunk.event.end =  target.end
+             console.log("SET",chunk.event)
+             break
+            }
 
+        }
+     }
+    });
+*/
     run(() => {
         event = chunk.event;
+      //console.log(event);
+        //untrack(() =>  event = chunk.event)
     });
 
     run(() => {
         display = event.display;
+        //untrack(() => display = event.display)
+
 
         // Style
         let step = $slotDuration.seconds;
@@ -45,6 +63,8 @@
         let maxHeight = ($_slotTimeLimits.max.seconds - start) / step * $slotHeight;
         let bgColor = event.backgroundColor || resourceBackgroundColor(event, $resources) || $eventBackgroundColor || $eventColor;
         let txtColor = event.textColor || resourceTextColor(event, $resources) || $eventTextColor;
+
+        untrack(() => {
         style =
             `top:${top}px;` +
             `min-height:${height}px;` +
@@ -72,14 +92,17 @@
             ...$_iClasses([], event),
             ...createEventClasses($eventClassNames, event, $_view)
         ].join(' ');
+       })
     });
 
     // Content
     run(() => {
+
         [timeText, content] = createEventContent(chunk, $displayEventEnd, $eventContent, $theme, $_intlEventTime, $_view);
     });
 
     onMount(() => {
+    //$effect(() => {
         if (isFunction($eventDidMount)) {
             $eventDidMount({
                 event: toEventWithLocalDates(event),
@@ -97,11 +120,6 @@
         }
     });
 
-    function _createHandler(fn, display) {
-        return !helperEvent(display) && isFunction(fn)
-            ? jsEvent => fn({event: toEventWithLocalDates(event), el, jsEvent, view: toViewWithLocalDates($_view)})
-            : undefined;
-    }
     function createHandler(fn, display) {
         return !helperEvent(display) && isFunction(fn)
             ? jsEvent => fn({event: toEventWithLocalDates(event), el, jsEvent, view: toViewWithLocalDates($_view)})
@@ -125,9 +143,6 @@
     
 
     const SvelteComponent = $derived($_interaction.resizer);
-    function fandler(e) {
-       console.log("Event pointer up")
-    }
 </script>
 
 <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
@@ -141,9 +156,9 @@
     onkeydown={onclick && keyEnter(onclick)}
     onmouseenter={ () => createHandler($eventMouseEnter, display)}
     onmouseleave={ () => createHandler($eventMouseLeave, display)}
-    onpointerdown={ !bgEvent(display) && !helperEvent(display) && createDragHandler($_interaction)}
-
+    onpointerdown={!bgEvent(display) && !helperEvent(display) && createDragHandler($_interaction)}
 >
+
     <SvelteComponent
         start
         {event}
@@ -154,10 +169,5 @@
         {event}
         on:pointerdown={createDragHandler($_interaction, ['y', 'end'])}
     />
-</article>
-<!--
-    onmouseenter={ createHandler($eventMouseEnter, display)}
-    onmouseleave={ createHandler($eventMouseLeave, display)}
-    onpointerdown={ !bgEvent(display) && !helperEvent(display) && createDragHandler($_interaction)}
--->
 
+</article>

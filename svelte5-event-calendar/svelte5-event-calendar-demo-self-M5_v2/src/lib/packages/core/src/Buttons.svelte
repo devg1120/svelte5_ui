@@ -1,5 +1,7 @@
 <script lang="ts">
     import { run } from 'svelte/legacy';
+    import { untrack } from "svelte";
+
 
     import {getContext, tick} from 'svelte';
     import {createDate, cloneDate, setContent, setMidnight, nextDate, prevDate, outsideRange} from './lib.js';
@@ -55,9 +57,10 @@
                 todayDisabled = test();
                 $date = currentDate;
             }
-           //await tick().then(() => running = false);
+            //tick().then(() => running = false);
         }
     });
+
 
 </script>
 

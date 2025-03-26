@@ -1,5 +1,6 @@
 <script lang="ts">
     import { run } from 'svelte/legacy';
+    import { untrack } from "svelte";
 
     //import {afterUpdate, getContext, onMount} from 'svelte';
     import { getContext, onMount} from 'svelte';
@@ -57,6 +58,8 @@
     });
 
     run(() => {
+     untrack(() => {
+
         display = event.display;
 
         // Class & Style
@@ -94,6 +97,7 @@
             ...createEventClasses($eventClassNames, event, $_view)
         ].join(' ');
     });
+    });
 
     // Content
     run(() => {
@@ -119,6 +123,7 @@
     });
 
     function createHandler(fn, display) {
+    //const createHandler = (fn, display) => {
         return !helperEvent(display) && isFunction(fn)
             ? jsEvent => fn({event: toEventWithLocalDates(event), el, jsEvent, view: toViewWithLocalDates($_view)})
             : undefined;
@@ -202,8 +207,8 @@
     tabindex="{onclick ? 0 : undefined}"
     onclick={onclick || undefined}
     onkeydown={onclick && keyEnter(onclick)}
-    onmouseenter={createHandler($eventMouseEnter, display)}
-    onmouseleave={createHandler($eventMouseLeave, display)}
+    onmouseenter={() => createHandler($eventMouseEnter, display)}
+    onmouseleave={() => createHandler($eventMouseLeave, display)}
     onpointerdown={!helperEvent(display) && createDragHandler($_interaction)}
 >
     <SvelteComponent

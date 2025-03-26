@@ -6,7 +6,12 @@
     import Day from './Day.svelte';
     import Week from './all-day/Week.svelte';
 
-    let {_viewDates, _intlDayHeader, _intlDayHeaderAL, allDaySlot, theme} = getContext('state');
+    let {_events, _viewDates, _intlDayHeader, _intlDayHeaderAL, allDaySlot, theme} = getContext('state');
+
+    //_events.subscribe(v => {
+    //    console.log(`time_grid/View.svelte: _events: ${v} `);
+    //});
+
 </script>
 
 <div class="{$theme.header}">

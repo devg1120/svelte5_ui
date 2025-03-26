@@ -117,6 +117,7 @@ export default class {
             // When view changes...
             this.view.subscribe(newView => {
                 if (newView === view) {
+			console.log("view change",newView)
                     // switch view component
                     this._viewComponent.set(component);
                     if (isFunction(opts.viewDidMount)) {

@@ -1,5 +1,6 @@
 <script>
     import { run } from 'svelte/legacy';
+    import { untrack } from "svelte";
 
     import {getContext} from 'svelte';
     import {keys} from './lib.js';
@@ -14,9 +15,12 @@
     });
 
     run(() => {
+     untrack(() => {
+
         for (let key of keys(sections)) {
             sections[key] = $headerToolbar[key].split(' ').map(group => group.split(','));
         }
+    });
     });
 </script>
 
@@ -26,10 +30,14 @@
             {#each sections[key] as buttons}
                 {#if buttons.length > 1}
                     <div class="{$theme.buttonGroup}">
+
                         <Buttons {buttons}/>
+
                     </div>
                 {:else}
+
                     <Buttons {buttons}/>
+
                 {/if}
             {/each}
         </div>

@@ -1,6 +1,4 @@
 import { writable } from 'svelte/store';
-import { preventDefault } from 'svelte/legacy';
-
 import { max, min, cloneDate, subtractDuration, addDuration, listView, getElementWithPayload, getPayload, timelineView, ancestor, createDuration, rect, isFunction, toViewWithLocalDates, toEventWithLocalDates, cloneEvent, copyTime, subtractDay, addDay, toISOString, assign, toLocalDate, listen as listen$1, runAll, bgEvent, helperEvent, noop as noop$1 } from '@event-calendar/core';
 import { globals, SvelteComponent, init, safe_not_equal, component_subscribe, noop, run_all, listen, is_function, bubble, set_store_value, detach, insert, empty, attr, element, destroy_component, transition_out, transition_in, group_outros, check_outros, mount_component, create_component, space, binding_callbacks } from 'svelte/internal';
 import { getContext } from 'svelte';
@@ -71,7 +69,6 @@ function validJsEvent(jsEvent) {
 	return jsEvent.isPrimary && (jsEvent.pointerType !== 'mouse' || jsEvent.buttons & 1);
 }
 
-
 function createPreventDefaultHandler(condition) {
 	return jsEvent => {
 		if (condition()) {
@@ -79,18 +76,6 @@ function createPreventDefaultHandler(condition) {
 		}
 	};
 }
-
-
-/*
-// GUSA
-function createPreventDefaultHandler(condition) {
-        return preventDefault((jsEvent) => {
-            if (condition()) {
-                jsEvent.preventDefault();
-            }
-        })
-}
-*/
 
 function instance$3($$self, $$props, $$invalidate) {
 	let $_view;

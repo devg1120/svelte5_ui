@@ -75,7 +75,6 @@
 </script>
 
 <svelte:window
-
     onpointermove={handlePointerMove}
     onscroll={handleScroll}
 />

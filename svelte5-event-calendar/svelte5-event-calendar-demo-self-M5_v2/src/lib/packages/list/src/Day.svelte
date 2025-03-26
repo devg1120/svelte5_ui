@@ -1,5 +1,6 @@
 <script lang="ts">
     import { run } from 'svelte/legacy';
+    import { untrack } from "svelte";
 
     import {getContext} from 'svelte';
     import {
@@ -26,6 +27,8 @@
     
 
     run(() => {
+ untrack(() => {      
+
         if (!disabled) {
             chunks = [];
             let start = date;
@@ -38,6 +41,7 @@
             }
             sortEventChunks(chunks);
         }
+    });
     });
 
     // dateFromPoint

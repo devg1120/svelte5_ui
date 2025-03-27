@@ -36,8 +36,8 @@
     text-align: right;
   }
 
-  .ec-header .ec-time ,
-  .ec-all-day .ec-time  {
+  .ec-header .ec-time,
+  .ec-all-day .ec-time {
     visibility: hidden;
     overflow-y: hidden;
     height: 0;
@@ -53,7 +53,7 @@
   }
 
   .ec-line:not(:first-child):after {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     border-bottom: 1px solid var(--ec-border-color);

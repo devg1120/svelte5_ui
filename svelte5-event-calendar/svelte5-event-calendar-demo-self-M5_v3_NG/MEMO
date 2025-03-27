@@ -1,0 +1,102 @@
+
+    
+package.json
+
+
+    "svelte": "^5.0.0",
+
+    "@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
+
+
+https://svelte.jp/docs/svelte/v5-migration-guide
+
+
+Migration script
+
+# npx sv migrate svelte-5
+
+grep -r "Can't migrate" src
+
+find src/ -type f -name "*.svelte" | xargs sed -i "s/run(()/\$effect(()/g"
+
+
+beforeUpdate  =>  $effect.pre
+afterUpdate   =>  $effect
+
+find src/ -type f -name "*.svelte" | xargs sed -i "s/beforeUpdate(()/\$effect.pre(()/g"
+find src/ -type f -name "*.svelte" | xargs sed -i "s/afterUpdate(()/\$effect(()/g"
+
+
+createEventDispatcher
+preventDefault
+
+################################################
+    import { untrack } from "svelte";
+
+untrack(() => y);
+
+
+    run(() => {
+ untrack(() => {
+
+        if (!disabled) {
+            chunks = [];
+            bgChunks = [];
+            for (let event of $_events) {
+                if ((!event.allDay || bgEvent(event.display)) && eventIntersects(event, start, end, resourceFilter)) {
+                    let chunk = createEventChunk(event, start, end);
+                    switch (event.display) {
+                        case 'background': bgChunks.push(chunk); break;
+                        default: chunks.push(chunk);
+                    }
+                }
+            }
+            groupEventChunks(chunks);
+        }
+ })
+    });
+
+##########################################
+
+LOOP
+
+Buttons.svelte  cimmentout
+
+############################################
+# grep -r "run(" .
+./interaction/src/Auxiliary.svelte:    run(() => {
+./interaction/src/Auxiliary.svelte:    run(() => {
+./interaction/src/Auxiliary.svelte:    run(() => {
+./interaction/src/Pointer.svelte:    run(() => {
+./list/src/Day.svelte:    run(() => {
+./list/src/Day.svelte:    run(() => {
+./list/src/Day.svelte:    run(() => {
+./list/src/Body.svelte:    run(() => {
+./list/src/Body.svelte:    run(() => {
+./list/src/Event.svelte:    run(() => {
+./list/src/Event.svelte:    run(() => {
+./core/src/lib/utils.js:export function run(fn) {
+./core/index.js:function run(fn) {
+./resource-time-grid/src/Label.svelte:    run(() => {
+./resource-timeline/src/Expander.svelte:    run(() => {
+./resource-timeline/src/Days.svelte:    run(() => {
+./resource-timeline/src/Days.svelte:    run(() => {
+./resource-timeline/src/Days.svelte:    run(() => {
+./resource-timeline/src/Day.svelte:    run(() => {
+./resource-timeline/src/Day.svelte:    run(() => {
+./resource-timeline/src/Body.svelte:    run(() => {
+./resource-timeline/src/Body.svelte:    run(() => {
+./resource-timeline/src/Event.svelte:    run(() => {
+./resource-timeline/src/Event.svelte:    run(() => {
+./resource-timeline/src/Event.svelte:    run(() => {
+./resource-timeline/src/Label.svelte:    run(() => {
+./day-grid/src/Body.svelte:    run(() => {
+./day-grid/src/Event.svelte:    //run(() => {   // $effect NG
+./day-grid/src/Week.svelte:    run(() => {
+./time-grid/src/Day.svelte:    run(() => {
+./time-grid/src/Day.svelte:    run(() => {
+./time-grid/src/Day.svelte:    run(() => {
+./time-grid/src/Day.svelte:    run(() => {
+./time-grid/src/Day.svelte:    run(() => {
+./time-grid/src/Day.svelte:    run(() => {
+

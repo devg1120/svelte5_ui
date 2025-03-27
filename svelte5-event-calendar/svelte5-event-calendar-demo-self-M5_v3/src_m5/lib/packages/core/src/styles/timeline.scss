@@ -64,19 +64,20 @@
 
   .ec-times {
     display: flex;
-    border-top: 1px solid var(--ec-border-color);;
+    border-top: 1px solid var(--ec-border-color);
   }
 
   .ec-time {
     border-left: 1px solid var(--ec-border-color);
     box-sizing: border-box;
-    font-size: .95em;
+    font-size: 0.95em;
     min-height: 24px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  .ec-time, .ec-line {
+  .ec-time,
+  .ec-line {
     width: 72px;
   }
 
@@ -100,7 +101,7 @@
   }
 
   .ec-line:not(:first-child):after {
-    content: '';
+    content: "";
     position: absolute;
     height: 100%;
     border-left: 1px solid var(--ec-border-color);
@@ -135,7 +136,7 @@
         border-bottom: 1px solid var(--ec-border-color);
       }
       &:last-child {
-        flex-basis: 100%!important;  // for vertical scroll needs
+        flex-basis: 100% !important; // for vertical scroll needs
       }
 
       span {

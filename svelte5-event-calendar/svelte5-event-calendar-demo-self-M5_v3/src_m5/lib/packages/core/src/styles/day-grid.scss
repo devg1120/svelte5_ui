@@ -15,10 +15,10 @@
 
   .ec-uniform {
     .ec-content {
-      overflow: hidden;  // remove scrolling due to hidden events
+      overflow: hidden; // remove scrolling due to hidden events
     }
     .ec-days {
-      flex: 1 1 0%;  // % is required to work properly for both auto and fixed calendar height
+      flex: 1 1 0%; // % is required to work properly for both auto and fixed calendar height
       min-height: 0;
     }
     .ec-day {
@@ -42,7 +42,7 @@
     position: absolute;
     bottom: 0;
     padding: 2px;
-    font-size: .85em;
+    font-size: 0.85em;
 
     a {
       cursor: pointer;

@@ -1,13 +1,13 @@
-import Calendar from './Calendar.svelte';
+import Calendar from "./Calendar.svelte";
 
 export default class extends Calendar {
-    destroy() {
-        this.$destroy();
-    }
+  destroy() {
+    this.$destroy();
+  }
 
-    get view() {
-        return this.getView();
-    }
+  get view() {
+    return this.getView();
+  }
 }
 
-export * from './lib.js';
+export * from "./lib.js";

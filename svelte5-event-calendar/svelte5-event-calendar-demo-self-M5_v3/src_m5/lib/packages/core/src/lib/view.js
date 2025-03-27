@@ -1,32 +1,32 @@
-import {assign} from './utils';
-import {toLocalDate} from './date';
+import { assign } from "./utils";
+import { toLocalDate } from "./date";
 
 export function createView(view, _viewTitle, _currentRange, _activeRange) {
-    return {
-        type: view,
-        title: _viewTitle,
-        currentStart: _currentRange.start,
-        currentEnd: _currentRange.end,
-        activeStart: _activeRange.start,
-        activeEnd: _activeRange.end,
-        calendar: undefined
-    };
+  return {
+    type: view,
+    title: _viewTitle,
+    currentStart: _currentRange.start,
+    currentEnd: _currentRange.end,
+    activeStart: _activeRange.start,
+    activeEnd: _activeRange.end,
+    calendar: undefined,
+  };
 }
 
 export function toViewWithLocalDates(view) {
-    view = assign({}, view);
-    view.currentStart = toLocalDate(view.currentStart);
-    view.currentEnd = toLocalDate(view.currentEnd);
-    view.activeStart = toLocalDate(view.activeStart);
-    view.activeEnd = toLocalDate(view.activeEnd);
+  view = assign({}, view);
+  view.currentStart = toLocalDate(view.currentStart);
+  view.currentEnd = toLocalDate(view.currentEnd);
+  view.activeStart = toLocalDate(view.activeStart);
+  view.activeEnd = toLocalDate(view.activeEnd);
 
-    return view;
+  return view;
 }
 
 export function listView(view) {
-    return view.startsWith('list');
+  return view.startsWith("list");
 }
 
 export function timelineView(view) {
-    return view.includes('Timeline');
+  return view.includes("Timeline");
 }

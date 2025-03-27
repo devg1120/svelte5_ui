@@ -73,4 +73,5 @@ time_grid/Day.svelte
 
 day_grid/Body.svelte
 day_grid/Week.svelte
+day_grid/Day.svelte
 

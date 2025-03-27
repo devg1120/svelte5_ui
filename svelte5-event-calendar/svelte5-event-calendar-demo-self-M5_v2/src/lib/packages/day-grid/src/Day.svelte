@@ -78,6 +78,7 @@
         disabled = outsideRange(date, $validRange);
     });
     run(() => {
+     // NOTUNTRACK
      //untrack(() => {
         if (!disabled) {
             dayChunks = [];

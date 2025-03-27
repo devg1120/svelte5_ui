@@ -62,4 +62,41 @@ LOOP
 
 Buttons.svelte  cimmentout
 
+############################################
+# grep -r "run(" .
+./interaction/src/Auxiliary.svelte:    run(() => {
+./interaction/src/Auxiliary.svelte:    run(() => {
+./interaction/src/Auxiliary.svelte:    run(() => {
+./interaction/src/Pointer.svelte:    run(() => {
+./list/src/Day.svelte:    run(() => {
+./list/src/Day.svelte:    run(() => {
+./list/src/Day.svelte:    run(() => {
+./list/src/Body.svelte:    run(() => {
+./list/src/Body.svelte:    run(() => {
+./list/src/Event.svelte:    run(() => {
+./list/src/Event.svelte:    run(() => {
+./core/src/lib/utils.js:export function run(fn) {
+./core/index.js:function run(fn) {
+./resource-time-grid/src/Label.svelte:    run(() => {
+./resource-timeline/src/Expander.svelte:    run(() => {
+./resource-timeline/src/Days.svelte:    run(() => {
+./resource-timeline/src/Days.svelte:    run(() => {
+./resource-timeline/src/Days.svelte:    run(() => {
+./resource-timeline/src/Day.svelte:    run(() => {
+./resource-timeline/src/Day.svelte:    run(() => {
+./resource-timeline/src/Body.svelte:    run(() => {
+./resource-timeline/src/Body.svelte:    run(() => {
+./resource-timeline/src/Event.svelte:    run(() => {
+./resource-timeline/src/Event.svelte:    run(() => {
+./resource-timeline/src/Event.svelte:    run(() => {
+./resource-timeline/src/Label.svelte:    run(() => {
+./day-grid/src/Body.svelte:    run(() => {
+./day-grid/src/Event.svelte:    //run(() => {   // $effect NG
+./day-grid/src/Week.svelte:    run(() => {
+./time-grid/src/Day.svelte:    run(() => {
+./time-grid/src/Day.svelte:    run(() => {
+./time-grid/src/Day.svelte:    run(() => {
+./time-grid/src/Day.svelte:    run(() => {
+./time-grid/src/Day.svelte:    run(() => {
+./time-grid/src/Day.svelte:    run(() => {
 

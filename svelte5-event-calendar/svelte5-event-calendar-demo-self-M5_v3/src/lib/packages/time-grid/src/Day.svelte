@@ -47,25 +47,25 @@
         console.log("time_grid/Day.svelte: _events:", v[5]);
     });
 */
-    $effect.pre(() => {
+    run(() => {
         disabled = outsideRange(date, $validRange);
     });
 
-    $effect.pre(() => {
+    run(() => {
         if (!disabled) {
             start = addDuration(cloneDate(date), $_slotTimeLimits.min);
             end = addDuration(cloneDate(date), $_slotTimeLimits.max);
         }
     });
 
-    $effect.pre(() => {
+    run(() => {
         resourceFilter = resource ?? (
             $filterEventsWithResources ? $resources : undefined
         );
     });
 
-    $effect(() => {
-untrack(() => {
+    run(() => {
+//untrack(() => {
         if (!disabled) {
             chunks = [];
             bgChunks = [];
@@ -80,10 +80,10 @@ untrack(() => {
             }
             groupEventChunks(chunks);
         }
- })
+ //})
     });
 
-    $effect(() => {
+    run(() => {
         if (!disabled) {
             iChunks = $_iEvents.map(
                 event => event && eventIntersects(event, start, end, resource) ? createEventChunk(event, start, end) : null
@@ -106,7 +106,7 @@ untrack(() => {
         };
     }
 
-    $effect(() => {
+    run(() => {
         if (el) {
             setPayload(el, dateFromPoint);
         }

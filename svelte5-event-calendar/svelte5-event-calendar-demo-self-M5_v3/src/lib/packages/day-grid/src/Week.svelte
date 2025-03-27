@@ -1,5 +1,5 @@
 <script lang="ts">
-    //import { run } from 'svelte/legacy';
+    import { run } from 'svelte/legacy';
     import { untrack } from "svelte";
 
     import {getContext, tick} from 'svelte';
@@ -72,8 +72,8 @@
 //	})
     }
 
-    $effect(() => {
-    untrack(() => {
+    run(() => {
+//    untrack(() => {
         chunks = [];
         bgChunks = [];
         for (let event of $_events) {
@@ -92,7 +92,7 @@
         longChunks = prepareEventChunks(chunks, $hiddenDays);
         // Run reposition only when events get changed
         reposition();
-	})
+//	})
     });
 
     $effect(() => {

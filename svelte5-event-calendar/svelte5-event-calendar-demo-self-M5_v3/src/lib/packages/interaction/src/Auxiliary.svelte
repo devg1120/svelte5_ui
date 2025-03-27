@@ -1,5 +1,5 @@
 <script>
-    import { run } from 'svelte/legacy';
+    //import { run } from 'svelte/legacy';
 
     import {getContext} from 'svelte';
     import {bgEvent, helperEvent, listen} from '@event-calendar/core';
@@ -20,16 +20,16 @@
             component?.handleScroll?.();
         }
     }
-    run(() => {
+    $effect(() => {
         $_draggable = event => (event.startEditable ?? $eventStartEditable) || (event.editable ?? $editable);
     });
-    run(() => {
+    $effect(() => {
         $_iClasses = (className, event) => {
             let {display} = event;
             return helperEvent(display) ? [$theme[display]] : (!bgEvent(display) && $_draggable(event) ? [$theme.draggable] : []);
         };
     });
-    run(() => {
+    $effect(() => {
         if ($_bodyEl) {
             listen($_bodyEl, 'scroll', bodyScrollHandler);
         }

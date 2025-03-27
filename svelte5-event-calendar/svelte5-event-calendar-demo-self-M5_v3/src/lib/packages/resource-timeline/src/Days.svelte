@@ -21,7 +21,7 @@
     let refs = $state([]);
     let height = $state(0);
 
-    run(() => {
+    $effect.pre(() => {
      untrack(() => {      
 
         start = cloneDate(limitToRange($_viewDates[0], $validRange));
@@ -44,7 +44,7 @@
         }, debounceHandle, _queue2);
     }
 
-    run(() => {
+    $effect.pre(() => {
      untrack(() => {      
         chunks = [];
         bgChunks = [];
@@ -65,7 +65,7 @@
     });
     });
 
-    run(() => {
+    $effect(() => {
         iChunks = $_iEvents.map(event => {
             let chunk;
             if (event && eventIntersects(event, start, end, resource)) {

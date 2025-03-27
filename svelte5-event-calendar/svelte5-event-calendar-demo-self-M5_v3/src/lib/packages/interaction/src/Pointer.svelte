@@ -1,5 +1,5 @@
 <script>
-    import { run } from 'svelte/legacy';
+    //import { run } from 'svelte/legacy';
 
     import {getContext} from 'svelte';
     import {addDuration, cloneDate, getElementWithPayload, getPayload} from '@event-calendar/core';
@@ -67,7 +67,7 @@
     function validEvent(jsEvent) {
         return jsEvent.isPrimary && jsEvent.pointerType === 'mouse';
     }
-    run(() => {
+    $effect(() => {
         if ($_iEvents[0]) {
             removePointerEvent();
         }

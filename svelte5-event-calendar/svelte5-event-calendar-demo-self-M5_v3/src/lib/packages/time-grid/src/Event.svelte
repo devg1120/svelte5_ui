@@ -43,9 +43,9 @@
     });
 */
     $effect.pre(() => {
-        event = chunk.event;
+        //event = chunk.event;
       //console.log(event);
-        //untrack(() =>  event = chunk.event)
+        untrack(() =>  event = chunk.event)
     });
 
     $effect(() => {

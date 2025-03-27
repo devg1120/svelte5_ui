@@ -10,7 +10,7 @@
 
     let payload = $state({});
 
-    run(() => {
+    $effect.pre(() => {
         payload = getPayload(resource);
     });
 

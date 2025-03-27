@@ -47,25 +47,31 @@
         console.log("time_grid/Day.svelte: _events:", v[5]);
     });
 */
-    run(() => {
+    $effect(() => {
+//untrack(() => {
         disabled = outsideRange(date, $validRange);
+//    });
     });
 
-    run(() => {
+    $effect(() => {
+untrack(() => {
         if (!disabled) {
             start = addDuration(cloneDate(date), $_slotTimeLimits.min);
             end = addDuration(cloneDate(date), $_slotTimeLimits.max);
         }
     });
+    });
 
-    run(() => {
+    $effect(() => {
+//untrack(() => {
         resourceFilter = resource ?? (
             $filterEventsWithResources ? $resources : undefined
         );
+//    });
     });
 
-    run(() => {
-//untrack(() => {
+   $effect(() => {
+untrack(() => {
         if (!disabled) {
             chunks = [];
             bgChunks = [];
@@ -80,15 +86,17 @@
             }
             groupEventChunks(chunks);
         }
- //})
+})
     });
 
-    run(() => {
+    $effect(() => {
+//untrack(() => {
         if (!disabled) {
             iChunks = $_iEvents.map(
                 event => event && eventIntersects(event, start, end, resource) ? createEventChunk(event, start, end) : null
             );
         }
+//   });
     });
 
     function dateFromPoint(x, y) {
@@ -106,10 +114,12 @@
         };
     }
 
-    run(() => {
+    $effect(() => {
+//untrack(() => {
         if (el) {
             setPayload(el, dateFromPoint);
         }
+//    });
     });
 </script>
 
@@ -120,6 +130,7 @@
     onpointerdown={() => !disabled ? $_interaction.action?.select : undefined}
 >
     <div class="{$theme.bgEvents}">
+Day
         {#if !disabled}
             {#each bgChunks as chunk (chunk.event)}
                 <Event {date} {chunk}/>

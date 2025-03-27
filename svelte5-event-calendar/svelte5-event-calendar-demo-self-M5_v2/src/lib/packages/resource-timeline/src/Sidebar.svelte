@@ -9,9 +9,10 @@
 
     let titleHeight = 0;
 
+    titleHeight = 49;
     //afterUpdate(() => {
     $effect(() => {
-        titleHeight = $_headerEl.clientHeight;
+        //titleHeight = $_headerEl.clientHeight;
     });
     
 </script>

@@ -1,5 +1,6 @@
 <script>
     //import {getContext, afterUpdate} from 'svelte';
+ import { run } from 'svelte/legacy';
     import {getContext } from 'svelte';
     import {max} from '@event-calendar/core';
     import Label from './Label.svelte';
@@ -10,10 +11,26 @@
     let titleHeight = 0;
 
     //afterUpdate(() => {
+
+    titleHeight = 49;
+    //console.log(_headerEl.clientHeight)
+    //titleHeight = $_headerEl.clientHeight
+/*
     $effect(() => {
-        titleHeight = $_headerEl.clientHeight;
+        //titleHeight = $_headerEl.clientHeight;
+        console.log($_headerEl.clientHeight)
     });
-    
+  */
+
+/*
+    _headerEl.subscribe(v => {
+        if ( $_headerEl.clientHeight !== 'undefined') {
+
+           titleHeight = $_headerEl.clientHeight;
+        }
+    });
+*/
+
 </script>
 
 <div class="{$theme.sidebar}">

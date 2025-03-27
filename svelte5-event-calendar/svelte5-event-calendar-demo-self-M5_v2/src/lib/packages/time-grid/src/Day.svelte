@@ -65,7 +65,8 @@
     });
 
     run(() => {
-untrack(() => {
+// NOTUNTRACK
+//untrack(() => {
         if (!disabled) {
             chunks = [];
             bgChunks = [];
@@ -80,7 +81,7 @@ untrack(() => {
             }
             groupEventChunks(chunks);
         }
- })
+// })
     });
 
     run(() => {

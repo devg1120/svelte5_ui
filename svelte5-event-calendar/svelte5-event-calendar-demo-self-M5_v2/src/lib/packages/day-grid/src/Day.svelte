@@ -78,7 +78,7 @@
         disabled = outsideRange(date, $validRange);
     });
     run(() => {
-     untrack(() => {
+     //untrack(() => {
         if (!disabled) {
             dayChunks = [];
             dayBgChunks = bgChunks.filter(bgChunk => datesEqual(bgChunk.date, date));
@@ -93,7 +93,7 @@
                 }
             }
         }
-    });
+    //});
     });
     run(() => {
         $_hiddenEvents[date.getTime()] = hiddenEvents;

@@ -11,7 +11,8 @@
     let days = $state();
 
     run(() => {
-     untrack(() => {
+     // NOTUNTRACK
+     //untrack(() => {
 
         weeks = [];
         days = 7 - $hiddenDays.length;
@@ -24,7 +25,7 @@
             }
             weeks.push(dates);
         }
-    });
+    //});
     });
     
 </script>

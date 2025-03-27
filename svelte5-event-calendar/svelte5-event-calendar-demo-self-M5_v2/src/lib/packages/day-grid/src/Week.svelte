@@ -73,7 +73,8 @@
     }
 
     run(() => {
-    untrack(() => {
+//NOTUNTRACK
+//    untrack(() => {
         chunks = [];
         bgChunks = [];
         for (let event of $_events) {
@@ -92,7 +93,7 @@
         longChunks = prepareEventChunks(chunks, $hiddenDays);
         // Run reposition only when events get changed
         reposition();
-	})
+//	})
     });
 
     run(() => {
